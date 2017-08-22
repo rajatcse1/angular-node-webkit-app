@@ -6,7 +6,5 @@
     "search": [
       "https://bower.herokuapp.com"
     ]
-  },
-	"proxy":"http://asdevproxy.ascorp.com:80",
-	"https-proxy":"http://asdevproxy.ascorp.com:80"
+  }
 }

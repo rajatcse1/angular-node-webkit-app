@@ -15,12 +15,13 @@ var gulp = require('gulp'),
     util = require("gulp-util"),
     rename = require('gulp-rename'),
     zip = require('gulp-zip'),
+    unzip = require('gulp-unzip'),
     exec = require('child_process').exec,
 
     devDirectory = 'app/',
     prodDirectory = 'build/',
     exeDirectory = 'exe/',
-    nwEngineDirectory = 'nwEngine/';
+    nwEngine = 'nw.zip';
 
 //adaptive to es6 format
 require('es6-promise').polyfill();
@@ -53,7 +54,8 @@ gulp.task('cleanExe', function() {
 });
 
 gulp.task('copyNW', ['cleanExe'], function() {
-    return gulp.src([nwEngineDirectory + '/**/*']).pipe(gulp.dest(exeDirectory));
+    return gulp.src(nwEngine).pipe(unzip()).pipe(gulp.dest(exeDirectory));
+    //return gulp.src([nwEngineDirectory + '/**/*']).pipe(gulp.dest(exeDirectory));
 });
 
 gulp.task('zipApp', ['copyNW'], function() {
